@@ -25,7 +25,15 @@ public class Located {
 	}
 
 	public int distance(final Located other) {
-		return (int) Math.ceil(Math.sqrt(Math.pow(row - other.getRow(), 2) + Math.pow(colum - other.getColum(), 2)));
+		return (int) Math.ceil(
+
+				Math.sqrt(
+
+						Math.pow(row - other.getRow(), 2) +
+
+		Math.pow(colum - other.getColum(), 2))
+
+		);
 
 	}
 }

@@ -14,11 +14,14 @@ public class App {
 		app.load();
 		app.start();
 
-		/*
-		 * app = new App("mother_of_all_warehouses"); app.load(); app.start();
-		 *
-		 * app = new App("redundancy"); app.load(); app.start();
-		 */
+		app = new App("mother_of_all_warehouses");
+		app.load();
+		app.start();
+
+		app = new App("redundancy");
+		app.load();
+		app.start();
+
 	}
 
 	private int rows;
@@ -67,6 +70,7 @@ public class App {
 							System.out.println("No product available");
 							return;
 						}
+
 						//
 						weight = productTypeWeights[delivery.getItem()];
 						Delivery last = delivery;
@@ -89,9 +93,6 @@ public class App {
 						int time = dron.distance(warehouse) + 1;
 						cmds.add(dron.getId() + " D " + delivery.getOrder() + " " + delivery.getItem() + " " + 1);
 						time = time + warehouse.distance(delivery) + 1;
-						dron.setRow(delivery.getRow());
-						dron.setColum(delivery.getColum());
-						dron.setT(t + time);
 
 						//
 						last = delivery;
@@ -101,6 +102,9 @@ public class App {
 							last = extra;
 						}
 						//
+						dron.setRow(last.getRow());
+						dron.setColum(last.getColum());
+						dron.setT(t + time);
 
 						System.out.println("D(" + dron.getId() + "): " + dron.getT());
 					} else {
